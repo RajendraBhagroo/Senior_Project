@@ -15,22 +15,19 @@ const styles = {
     width: "200px",
     height: "auto"
   },
-  Dual: {
-    width: "600px",
-    height: "450px",
-    margin: "0 1em 0"
-  },
   Screen: {
     width: "558px",
     height: "359px"
   },
   Cont: {
     height: "100%",
-    minWidth: "1000px",
+    minWidth: "1220px",
     padding: "20px 50px 20px 50px"
   },
-  Button: {
-    margin: "0 0.5em 0"
+  Card_Size: {
+    width: "600px",
+    height: "500px",
+    margin: "0 1em 1em 1em"
   },
   Button_Location: {
     padding: "50px 0 50px 0",
@@ -55,6 +52,11 @@ const styles = {
   Button_Icon: {
     width: "60px",
     height: "60px"
+  },
+  Min_Height: {
+    height: "700px",
+    width: "1300px",
+    margin: "0 auto"
   }
 };
 class StudentStream extends Component {
@@ -75,85 +77,88 @@ class StudentStream extends Component {
       } else {
         StudentStreamPage = (
           <div style={styles.Cont}>
-            <div>
-              <p>{user.userName}</p>
-              <div className="row">
-                <div style={styles.Card}>
-                  <div className="card">
-                    <div className="card-header">
-                      <strong>Courses Enrolled In</strong>
-                    </div>
-                    <div>
-                      <ProfileSideCourseCard
-                        course={profile.studentFields.coursesEnrolledIn}
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/*--Stream Screen--*/}
-                <div className="col">
-                  <div className="card border-primary">
-                    <div className="card-header bg-primary text-white">
-                      Professor's Stream
-                    </div>
-                    <div className="card-body bg-dark">
-                      <video id="ForiegnVid" style={styles.Screen} />
-                    </div>
-                  </div>
-                </div>
-
-                {/*--Buttons--*/}
+            <div style={styles.Min_Height}>
+              <div style={{ width: "1200px", margin: "0 auto" }}>
+                <p>{user.userName}</p>
                 <div>
-                  <div>
-                    <div
-                      className="card border-primary"
-                      style={styles.Button_Log}
-                    >
-                      <div className="card-body">
-                        <button type="button" className="btn btn-link">
-                          <img
-                            style={styles.Button_Icon}
-                            src={Question_Button}
-                            alt="Question"
+                  {/* //-----------------------Student's View-------------------------------------------- */}
+                  <div className="row">
+                    <div style={styles.Card}>
+                      <div className="card">
+                        <div className="card-header">
+                          <strong>Courses Enrolled In</strong>
+                        </div>
+                        <div>
+                          <ProfileSideCourseCard
+                            course={profile.studentFields.coursesEnrolledIn}
                           />
-                        </button>
-                        <button type="button" className="btn btn-link">
-                          <img
-                            style={styles.Button_Icon}
-                            src={Confused_Button}
-                            alt="Confused"
-                          />
-                        </button>
-                        <button type="button" className="btn btn-link">
-                          <img
-                            style={styles.Button_Icon}
-                            src={OK_Button}
-                            alt="OK"
-                          />
-                        </button>
-                        <button
-                          className="btn btn-info"
-                          id="startStream"
-                          style={{ marginLeft: "480px" }}
-                          onClick={function() {
-                            JoinStream();
-                          }}
-                        >
-                          Join Stream
-                        </button>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  {/*--Chat--*/}
-                  <div>
-                    <div style={styles.Student_Chat}>
+                    {/*--Stream Screen--*/}
+                    <div style={styles.Card_Size}>
                       <div className="card border-primary">
                         <div className="card-header bg-primary text-white">
-                          Chat
+                          Professor's Stream
                         </div>
-                        <div className="card-body" />
+                        <div className="card-body bg-dark">
+                          <video id="ForiegnVid" style={styles.Screen} />
+                        </div>
+                      </div>
+                      <button
+                        className="btn btn-info"
+                        id="startStream"
+                        style={{ margin: "1em 0 0 40%" }}
+                        onClick={function() {
+                          JoinStream();
+                        }}
+                      >
+                        Join Stream
+                      </button>
+                    </div>
+                    {/*--Buttons--*/}
+                    <div>
+                      <div>
+                        <div
+                          className="card border-primary"
+                          style={styles.Button_Log}
+                        >
+                          <div className="card-body">
+                            <button type="button" className="btn btn-link">
+                              <img
+                                style={styles.Button_Icon}
+                                src={Question_Button}
+                                alt="Question"
+                              />
+                            </button>
+                            <button type="button" className="btn btn-link">
+                              <img
+                                style={styles.Button_Icon}
+                                src={Confused_Button}
+                                alt="Confused"
+                              />
+                            </button>
+                            <button type="button" className="btn btn-link">
+                              <img
+                                style={styles.Button_Icon}
+                                src={OK_Button}
+                                alt="OK"
+                              />
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                      {/*--Chat--*/}
+                      <div>
+                        <div style={styles.Student_Chat}>
+                          <div className="card border-primary">
+                            <div className="card-header bg-primary text-white">
+                              Chat
+                            </div>
+                            <div className="card-body" />
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
